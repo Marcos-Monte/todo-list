@@ -1,14 +1,14 @@
 <template>
 
     <section class="containerInput">
-        <div>
+
             <input 
                 type="text" 
                 placeholder="Nova tarefa?" 
-                
+                v-model="novaTarefa"
             >
-            <button @click="cadastrarTarefa(event)">+</button>
-        </div>
+            <button @click="cadastrarTarefa()">+</button>
+        
     </section>
 
 </template>
@@ -20,10 +20,26 @@
     const tarefas = data.tarefas;
 
     export default {
-        methods: {
-            cadastrarTarefa(event){
-                tarefas.push(event.target.value)
+
+        data(){
+            return{
+
+                novaTarefa: '',
+
             }
+        },
+
+        methods: {
+
+            cadastrarTarefa(){
+                
+                tarefas.push({
+                    descricao: this.novaTarefa,
+                    status: 1,
+                })
+                console.log('ADD')
+            }
+
         }
     }
 
@@ -32,22 +48,17 @@
 <style scoped>
 
     .containerInput {
+        width: 100%;
         display: flex;
-        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         gap: 0;
         padding-bottom: 2rem;
         border-bottom: solid gray;
     }
 
-    div {
-        width: 35%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     input {
-        flex: 1;
+        width: 50%;
         height: 2rem;
         padding: 0 .3rem;
         border: solid #000;
@@ -62,6 +73,13 @@
         background-color: aqua;
         font-size: 1.2rem;
         font-weight: 900;
+    }
+
+    @media (max-width: 850px){
+
+        input{
+            width: 80%;
+        }
     }
 
 </style>

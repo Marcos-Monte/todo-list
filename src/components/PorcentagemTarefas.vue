@@ -39,6 +39,10 @@
 
 <style scoped>
 
+    section {
+        width: 100%;
+    }
+
     .barra {
         width: 100%;
         height: 2rem;

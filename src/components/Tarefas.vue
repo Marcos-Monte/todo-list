@@ -1,6 +1,6 @@
 <template>
 
-  <section>
+  <section class="container">
     <h1>Tarefas</h1>
 
     <PorcentagemTarefas />
@@ -26,8 +26,9 @@ import PorcentagemTarefas from './PorcentagemTarefas.vue';
 
 <style>
 
-  section {
+  .container {
     width: 70%;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +45,7 @@ import PorcentagemTarefas from './PorcentagemTarefas.vue';
 
   @media (max-width: 500px){
 
-    section{
+    .container{
       width: 100%;
       padding: .2rem;
 

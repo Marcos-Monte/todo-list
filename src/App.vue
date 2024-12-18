@@ -1,8 +1,8 @@
 <template>
 
-  <section>
+  <main>
     <Tarefas />
-  </section>
+  </main>
 
 </template>
 
@@ -21,9 +21,10 @@
 
 <style scoped>
 
-  section {
+  main {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
     background: linear-gradient(to right, #A43931, #1D4350); 
   }
 

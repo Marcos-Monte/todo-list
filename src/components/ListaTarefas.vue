@@ -2,7 +2,7 @@
 
     <section class="lista">
         <Tarefa 
-            v-for="(tarefa, index) in tarefas"
+            v-for="(tarefa, index) in tarefasOrdenadas"
             :key="index"
             :descricao="tarefa.descricao"
             :status="tarefa.status"
@@ -25,8 +25,14 @@ import data from '@/data';
         data(){
             return {
 
-                tarefas: data.tarefas
+                tarefas: data.tarefas,
 
+            }
+        },
+
+        computed: {
+            tarefasOrdenadas(){
+                return [...this.tarefas].sort((a, b) => b.status - a.status)
             }
         }
 

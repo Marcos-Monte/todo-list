@@ -1,3 +1,4 @@
+
 export default {
     tarefas: [
         {descricao: 'Lavar Carro', status: false},
@@ -5,5 +6,6 @@ export default {
         {descricao: 'Pagar Boleto do Concurso', status: true},
         {descricao: 'Fazer as Malas', status: false},
     ],
+
     
 }
