@@ -27,7 +27,7 @@ import PorcentagemTarefas from './PorcentagemTarefas.vue';
 <style>
 
   section {
-    width: 50%;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,6 +40,15 @@ import PorcentagemTarefas from './PorcentagemTarefas.vue';
     text-transform: uppercase;
     color: #fff;
     text-shadow: 10px black;
+  }
+
+  @media (max-width: 500px){
+
+    section{
+      width: 100%;
+      padding: .2rem;
+
+    }
   }
 
 </style>
