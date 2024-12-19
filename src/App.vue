@@ -34,6 +34,8 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
   /* Importando a lista de tarefas de um arquivo externo */
   import data from '@/data.js';
 
+  import eventBus from './barramento';
+
   export default {
 
     /* Registrando Componentes Filhos */
@@ -66,6 +68,36 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
       }
 
+    },
+
+    /* Ciclo de Vida do Componente: Sempre que criar o Esse componente, vai ficar observando os elementos daqui de dentro */
+    created(){
+
+      /* Monitorando o Evento 'alterouStatus' que recebe um Objeto*/
+      eventBus.on('alterouStatus', (tarefa) => {
+
+        /* Armazena o 'indice' do Objeto (tarefa enviada pela Emissão do Evento) */
+        const index = this.tarefas.indexOf(tarefa);
+
+        /* Armazena o Objeto (tarefa selecionada e encontrada via Index) */
+        const tarefaSelecionada = this.tarefas[index];
+
+        /* Altera o valor Boolean da chave 'status' para o 'oposto' dentro do Objeto */
+        tarefaSelecionada.status = !tarefaSelecionada.status
+
+      }),
+
+      /* Monitorando o Evento 'excluiuTarefa' que recebe um Objeto*/
+      eventBus.on('excluiuTarefa', (tarefa) => {
+
+        /* Armazena o 'indice' do Objeto (tarefa enviada pela Emissão do Evento) */
+        const index = this.tarefas.indexOf(tarefa);
+
+        /* Verifica se o 'index' é maior ou igual a zero, antes de excluir o Objeto (tarefa) do Array (tarefas). OBS:  splice = recebe duas propriedades: inicio (onde se inicia a retirada de elementos) e quantidade (qtde de elementos a serem retirados do Array)*/
+        (index >= 0)&&this.tarefas.splice(index, 1)
+
+      })
+
     }
 
   }
@@ -83,6 +115,13 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
     background: linear-gradient(to right, #A43931, #1D4350); 
     color: #fff;
     font-family: "Verdana", sans-serif;
+  }
+
+  #app>h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  
   }
 
 </style>
