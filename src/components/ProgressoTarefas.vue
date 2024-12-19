@@ -21,11 +21,12 @@
 
     export default {
 
+         /* props que serão recebidas Diretamente pelo Componente Pai */
         props: {
 
             propsProgresso: {
                 type: Number,
-                default: 0
+                default: 0 
             }
 
         }
@@ -38,7 +39,7 @@
 
     .secaoProgresso {
         width: 100%;
-        padding: 2rem 0;
+        height: 5rem;
         display: flex;
         justify-content: center;
         align-items: center;

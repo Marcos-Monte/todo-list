@@ -20,6 +20,7 @@
 
 <script>
 
+    /* Importando Vue Instance responsável por comunicação entre componentes */
     import eventBus from '@/barramento';
 
     export default {

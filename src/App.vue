@@ -34,6 +34,7 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
   /* Importando a lista de tarefas de um arquivo externo */
   import data from '@/data.js';
 
+  /* Importando Vue Instance responsável por comunicação entre componentes */
   import eventBus from './barramento';
 
   export default {
@@ -62,9 +63,9 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
         /* Armazena a quantidade de Objetos onde o valor da chave 'status' é 'true' */
         const concluidas = this.tarefas.filter(tarefa => tarefa.status === true).length
-
+      
         /* Retorna, em forma de porcentagem. ParseInt, serve para transformar o resultado em um número inteiro */
-        return parseInt((concluidas / total) * 100)
+        return parseInt(concluidas / total * 100) || 0 
 
       }
 
@@ -95,6 +96,34 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
         /* Verifica se o 'index' é maior ou igual a zero, antes de excluir o Objeto (tarefa) do Array (tarefas). OBS:  splice = recebe duas propriedades: inicio (onde se inicia a retirada de elementos) e quantidade (qtde de elementos a serem retirados do Array)*/
         (index >= 0)&&this.tarefas.splice(index, 1)
+
+      }),
+
+      /* Monitorando o Evento 'adicionouTarefa' que recebe uma String*/
+      eventBus.on('adicionouTarefa', (novaDescricao) => {
+
+        /* Armazena os Objetos (tarefa) que tem a mesma descricao */
+        const duplicado = this.tarefas.filter(tarefa => tarefa.descricao === novaDescricao)
+
+        /* Condicionais:  */
+        if (novaDescricao === ''){ /* Se a String (novaDescricao) for vazia */
+
+          return
+
+        } else if (duplicado < 1){ /* Se  */
+
+          /* Adicionando Objeto (nova tarefa) ao Array (tarefas) */
+          this.tarefas.push({ 
+
+            /* chave: valor */
+            descricao: novaDescricao,
+            status: false
+
+          })
+
+        }
+
+        
 
       })
 
