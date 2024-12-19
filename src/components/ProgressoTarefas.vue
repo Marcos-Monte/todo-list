@@ -1,6 +1,19 @@
 <template>
+    <!-- Seção completa -->
+    <section class="secaoProgresso">
 
-    <h2>Progresso de Tarefas</h2>
+        <!-- Barra de Progresso -->
+        <div class="barraProgresso">
+
+            <!-- Marcador do Progresso -->
+            <span>{{ propsProgresso }}%</span>
+
+            <!-- Preenchimento da Barra de Progresso... O preenchimento é baseado na largura (width) renderizada dinamicamente por 'v-bind-style' -->
+            <div class="statusProgresso" :style="{width: propsProgresso + '%'}"></div>
+
+        </div>
+
+    </section>
 
 </template>
 
@@ -8,7 +21,14 @@
 
     export default {
 
+        props: {
 
+            propsProgresso: {
+                type: Number,
+                default: 0
+            }
+
+        }
 
     }
 
@@ -16,6 +36,39 @@
 
 <style>
 
-    
+    .secaoProgresso {
+        width: 100%;
+        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Position 'relative', garante que o elemento 'statusProgresso' o use como referencia */
+    .barraProgresso {
+        position: relative;
+        width: 80%;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid black;
+        border-radius: 8px;
+    }
+
+    /* propriedade (z-index) garante que o Marcador do Progresso fique ACIMA dos outros elementos*/
+    .barraProgresso>span {
+        z-index: 2;
+        font-size: 1.5rem;
+    }
+
+    /* Position absoluta de acordo com o elemento Pai. */
+    .statusProgresso {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        background-color: green;
+        border-radius: 8px;
+    }
 
 </style>
