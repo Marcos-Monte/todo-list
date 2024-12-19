@@ -1,27 +1,21 @@
 <template>
 
-  <main>
-    <Tarefas />
-  </main>
+  <h1>Tarefas</h1>
 
 </template>
 
 <script>
 
-  import Tarefas from './components/Tarefas.vue';
-
   export default {
 
     name: 'App',
 
-    components: {Tarefas},
-    
   }
 </script>
 
 <style scoped>
 
-  main {
+  template {
     width: 100%;
     min-height: 100vh;
     display: flex;
