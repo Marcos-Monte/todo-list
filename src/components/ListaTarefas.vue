@@ -59,6 +59,14 @@
         justify-content: center;
         align-items: center;
         font-size: 2rem;
+        text-align: center;
+    }
+
+    /* Media */
+    @media screen and (max-width: 500px){
+        .mensagem{
+            font-size: 1.5rem;
+        }
     }
 
 </style>

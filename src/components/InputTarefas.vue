@@ -74,7 +74,7 @@
     }
 
     .containerInput {
-        width: 30%;
+        width: 50%;
         height: 2.5rem;
         display: flex;
         justify-content: center;
@@ -82,7 +82,7 @@
     }
 
     .containerInput>input {
-        flex: 1;
+        width: 90%;
         height: 100%;
         border-radius: 12px 0px 0px 12px;
         border: 1px solid #ddd;
@@ -98,7 +98,7 @@
     }
 
     .containerInput>button{
-        width: 30px;
+        width: 10%;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -109,6 +109,14 @@
         color: #fff;
         font-size: 1.5rem;
         font-weight: 800;
+    }
+
+    /* Media */
+
+    @media screen and (max-width: 800px){
+        .containerInput{
+            width: 80%;
+        }
     }
 
 </style>
