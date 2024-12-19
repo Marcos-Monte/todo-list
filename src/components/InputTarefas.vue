@@ -74,8 +74,8 @@
     }
 
     .containerInput {
-        width: 40%;
-        height: 2rem;
+        width: 30%;
+        height: 2.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -84,7 +84,7 @@
     .containerInput>input {
         flex: 1;
         height: 100%;
-        border-radius: 8px 0px 0px 8px;
+        border-radius: 12px 0px 0px 12px;
         border: 1px solid #ddd;
         background-color: transparent;
         color: #fff;
@@ -93,13 +93,17 @@
         padding-left: .5rem;
     }
 
+    .containerInput>input::placeholder{
+        color: #ddd;
+    }
+
     .containerInput>button{
-        width: 2rem;
+        width: 30px;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 0px 8px 8px 0px;
+        border-radius: 0px 12px 12px 0px;
         border: 1px solid #ddd;
         background-color: #A43931;
         color: #fff;

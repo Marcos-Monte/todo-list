@@ -13,7 +13,7 @@
     </section>
 
     <!-- Se o Array (propsTarefas) for vazio, mostrar a mensagem abaixo -->
-    <p v-else>Sua vida está organizada ;)</p>
+    <p v-else class="mensagem">Sua vida está organizada ;)</p>
 
 </template>
 
@@ -50,6 +50,15 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 1rem
+    }
+
+    .mensagem {
+        width: 100%;
+        height: 8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
     }
 
 </style>
