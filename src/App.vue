@@ -103,7 +103,7 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
       eventBus.on('adicionouTarefa', (novaDescricao) => {
 
         /* Armazena os Objetos (tarefa) que tem a mesma descricao */
-        const duplicado = this.tarefas.filter(tarefa => tarefa.descricao === novaDescricao)
+        const duplicado = this.tarefas.filter(tarefa => tarefa.descricao.toUpperCase() === novaDescricao.toUpperCase())
 
         /* Condicionais:  */
         if (novaDescricao === ''){ /* Se a String (novaDescricao) for vazia */
