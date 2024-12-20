@@ -15,6 +15,7 @@ O projeto foi estruturado para ser funcional e intuitivo, utilizando boas práti
 - **Marcar como Concluída**: Clique no cartão para indicar que a tarefa foi concluída.  
 - **Excluir Tarefas**: Remova tarefas da lista clicando no botão `x`.  
 - **Progresso das Tarefas**: Um marcador mostra a porcentagem de tarefas concluídas em relação ao total.  
+- **Armazenamento Local**: Utiliza **localStorage** para armazenar as tarefas no próprio navegador, garantindo que suas tarefas persistam mesmo ao fechar e reabrir a aplicação. O **localStorage** é uma API do navegador que permite armazenar dados de forma simples e segura, mantendo-os disponíveis em visitas futuras sem necessidade de servidor.
 
 ## Como Usar  
 1. Acesse o projeto rodando: [ToDo List no Vercel](https://todo-list-one-blue.vercel.app/)  
@@ -22,6 +23,9 @@ O projeto foi estruturado para ser funcional e intuitivo, utilizando boas práti
 3. Clique no cartão da tarefa para marcá-la como concluída.  
 4. Use o botão `x` para excluir uma tarefa da lista.  
 5. Acompanhe o progresso de suas atividades pelo marcador.  
+
+## Resolução de Tela
+A aplicação foi projetada com uma resolução responsiva e amigável, adaptando-se de forma elegante a diferentes tamanhos de tela, desde dispositivos **desktop** até **mobile**.
 
 ---
 
