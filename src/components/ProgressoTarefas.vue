@@ -72,9 +72,8 @@
         border-radius: 8px;
     }
 
-        /* Media */
-
-        @media screen and (max-width: 800px){
+    /* Media */
+    @media screen and (max-width: 800px){
         .barraProgresso{
             width: 80%;
         }

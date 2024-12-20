@@ -191,7 +191,7 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #A43931, #1D4350); 
+    background: linear-gradient(to right, #cb2d3e, #1D4350); 
     color: #fff;
     font-family: "Verdana", sans-serif;
   }
