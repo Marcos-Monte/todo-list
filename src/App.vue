@@ -32,8 +32,7 @@ import ListaTarefas from './components/ListaTarefas.vue';
 import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
   /* Importando a lista de tarefas de um arquivo externo */
-  import data from '@/data.js';
-
+  
   /* Importando Vue Instance responsável por comunicação entre componentes */
   import eventBus from './barramento';
 
@@ -47,7 +46,7 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
       return {
 
         /* Variavel 'tarefas' recebe o Array de Objetos (Cada Objeto é uma tarefa) */
-        tarefas: data.tarefas,
+        tarefas: [],
 
       }
 
@@ -66,6 +65,25 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
       
         /* Retorna, em forma de porcentagem. ParseInt, serve para transformar o resultado em um número inteiro */
         return parseInt(concluidas / total * 100) || 0 
+
+      }
+
+    },
+
+    /* Métodos, Objetos, etc... de dentro dessa 'seção', serão monitorados */
+    watch: {
+
+      /* Monitorar o Array 'tarefas' */
+      tarefas: {
+        /* Se vamos verificar as mudanças profundamente ou não (true ou false) */
+        deep: true,
+
+
+        handler(){
+          /* Pega a lista de tarefas <- Converte em String <- setItem (adiciona) no 'localStorage' (navegador), usando a chave 'tarefas' como referencia  */
+          localStorage.setItem('tarefas', JSON.stringify(this.tarefas))
+
+        }
 
       }
 
@@ -125,8 +143,18 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
         
 
-      })
+      });
 
+      /* Assim que o componente é criado, faz uma busca nos dados salvos no navegador (localStorage), busca os dados salvos com a chave 'tarefas' */
+      const tarefasJson = localStorage.getItem('tarefas');
+
+      /* Armazena os dados achados que era String, transformados em um Array */
+      const tarefasArray = JSON.parse(tarefasJson);
+
+      /* Condicional, se os dados encontrados forem um Array -> Armazenar esse Array nos 'dados locais - tarefas' -> senão, armazenar um array vazio */
+      Array.isArray(tarefasArray)? this.tarefas = tarefasArray : this.tarefas = [];
+
+      /* OBS-> DEPOIS DE CRIAR, FICAR MONITORANDO 'TAREFAS' (seção 'watch') */
     }
 
   }
