@@ -48,7 +48,7 @@
     /* Position 'relative', garante que o elemento 'statusProgresso' o use como referencia */
     .barraProgresso {
         position: relative;
-        width: 80%;
+        width: 50%;
         height: 2rem;
         display: flex;
         justify-content: center;
@@ -70,6 +70,14 @@
         height: 100%;
         background-color: green;
         border-radius: 8px;
+    }
+
+        /* Media */
+
+        @media screen and (max-width: 800px){
+        .barraProgresso{
+            width: 80%;
+        }
     }
 
 </style>

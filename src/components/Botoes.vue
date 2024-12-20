@@ -105,5 +105,12 @@
         color: #000
     }
 
+    /* Media */
+    @media screen and (max-width: 800px){
+        .botao{
+            width: 35%;
+            font-size: 1rem;
+        }
 
+    }
 </style>

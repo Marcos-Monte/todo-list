@@ -185,6 +185,7 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
   #app {
     width: 100%;
+    min-width: 280px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -199,7 +200,6 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
     font-size: 3rem;
     font-weight: 900;
     text-transform: uppercase;
-  
   }
 
 </style>
