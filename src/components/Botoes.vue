@@ -43,16 +43,20 @@
             /* Ao iniciar esse método será enviado um evento que acarretará em marcar como concluidas todas as tarefas */
             concluirTarefas(){
 
-                /* Emite um Evento Personalizado e para o valor da variavel 'concluir' */
-                eventBus.emit('concluiuTarefas', this.concluir )
+                /* Método de confirmação, se clicar em confirmar, segue o codigo */
+                const confirmacao = confirm('Você deseja marcar todas as tarefas como concluídas?');
+
+                confirmacao === true&&eventBus.emit('concluiuTarefas', this.concluir )/* Emite um Evento Personalizado e para o valor da variavel 'concluir' */
 
             },
 
             /* Ao iniciar esse método será enviado um evento que acarretará apagar todas as tarefas que estiverem consluídas */
             limparTarefas(){
 
+                 /* Método de confirmação, se clicar em confirmar, segue o codigo */
+                const confirmacao = confirm('Você deseja apagar todas as tarefas concluídas?');
                 /* Emite um Evento Personalizado e não passa valor algum */
-                eventBus.emit('limpouTarefasConcluidas')
+                confirmacao === true&&eventBus.emit('limpouTarefasConcluidas')
 
             }
 
