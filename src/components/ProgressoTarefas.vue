@@ -53,7 +53,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: solid black;
+        border: solid #fff;
         border-radius: 8px;
     }
 

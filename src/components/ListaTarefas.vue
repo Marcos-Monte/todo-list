@@ -1,7 +1,10 @@
 <template>
 
+    <h2 class="titulo">Lista de Tarefas</h2>
+
     <!-- Seção será visível apenas se o Array (propsTarefas), recebido via 'props', for 'true' (existir algum valor dentro) -->
     <section v-if="propsTarefas.length" class="listaTarefas" >
+
 
         <!-- Array (propsTarefas) será percorrido e cada Objeto será enviada via 'props' (propsTarefa) pare renderização do componente. OBS: Necessário indicar uma 'v-bind-key', para evitar valores duplicados -->
         <Tarefa 
@@ -42,6 +45,11 @@
 </script>
 
 <style>
+
+    .titulo{
+        padding: 3rem 0;
+        font-size: 2rem;
+    }
 
     .listaTarefas {
         width: 100%;

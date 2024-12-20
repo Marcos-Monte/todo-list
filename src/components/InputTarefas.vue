@@ -111,6 +111,11 @@
         font-weight: 800;
     }
 
+    .containerInput>button:hover {
+        background-color: #fff;
+        color: #A43931;
+    }
+
     /* Media */
 
     @media screen and (max-width: 800px){

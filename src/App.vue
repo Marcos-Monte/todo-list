@@ -13,6 +13,8 @@
 
     <InputTarefas />
 
+    <Botoes />
+
     <!-- Recebe como 'props', a lista de 'tarefas' -->
     <ListaTarefas 
       
@@ -27,7 +29,8 @@
 <script>
 
   /* Importando Componentes Filhos para o Componente Principal */
-  import InputTarefas from './components/InputTarefas.vue';
+  import Botoes from './components/Botoes.vue';
+import InputTarefas from './components/InputTarefas.vue';
 import ListaTarefas from './components/ListaTarefas.vue';
 import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
@@ -39,7 +42,7 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
   export default {
 
     /* Registrando Componentes Filhos */
-    components: {ProgressoTarefas, InputTarefas, ListaTarefas},
+    components: {ProgressoTarefas, InputTarefas, ListaTarefas, Botoes},
 
     data(){
 
@@ -143,7 +146,25 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
         
 
+      }),
+
+      /* Monitorando o Evento 'concluiuTarefas' que recebe uma String*/
+      eventBus.on('concluiuTarefas', (concluir) => {
+
+        /* Atribuindo o valor 'true' para todas as chaves 'status' de cada Objeto (tarefa) dentro do Array (tarefas) */
+        this.tarefas.map((tarefa) => tarefa.status = concluir)
+
       });
+
+      /* Monitorando o Evento 'limpouTarefasConcluidas' que recebe uma String*/
+      eventBus.on('limpouTarefasConcluidas', () => {
+
+        /* Evento não manda nenhuma informação. Armazena na constante apenas os Objetos (tarefa) com o status 'false' (tarefa não concluída) */
+        const tarefasFaltantes = this.tarefas.filter(tarefa => tarefa.status === false);
+
+        /* Atribui o novo Array (tarefasFaltantes) substituindo os valores do antigo */
+        this.tarefas = tarefasFaltantes
+      })
 
       /* Assim que o componente é criado, faz uma busca nos dados salvos no navegador (localStorage), busca os dados salvos com a chave 'tarefas' */
       const tarefasJson = localStorage.getItem('tarefas');
