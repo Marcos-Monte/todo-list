@@ -1,5 +1,5 @@
 <template>
-
+  <!-- Aqui é o 'body' da aplucação -->
   <section id="app">
 
     <h1>Tarefas</h1>
@@ -28,13 +28,11 @@
 
 <script>
 
-  /* Importando Componentes Filhos para o Componente Principal */
-  import Botoes from './components/Botoes.vue';
+/* Importando Componentes Filhos para o Componente Principal */
+import Botoes from './components/Botoes.vue';
 import InputTarefas from './components/InputTarefas.vue';
 import ListaTarefas from './components/ListaTarefas.vue';
 import ProgressoTarefas from './components/ProgressoTarefas.vue';
-
-  /* Importando a lista de tarefas de um arquivo externo */
   
   /* Importando Vue Instance responsável por comunicação entre componentes */
   import eventBus from './barramento';
@@ -81,7 +79,6 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
         /* Se vamos verificar as mudanças profundamente ou não (true ou false) */
         deep: true,
 
-
         handler(){
           /* Pega a lista de tarefas <- Converte em String <- setItem (adiciona) no 'localStorage' (navegador), usando a chave 'tarefas' como referencia  */
           localStorage.setItem('tarefas', JSON.stringify(this.tarefas))
@@ -95,7 +92,8 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
     /* Ciclo de Vida do Componente: Sempre que criar o Esse componente, vai ficar observando os elementos daqui de dentro */
     created(){
 
-      /* Monitorando o Evento 'alterouStatus' que recebe um Objeto*/
+      /* Monitorando o Evento 'alterouStatus' que recebe um Objeto.
+      OBS -> Emitido pelo componente 'Tarefa'*/
       eventBus.on('alterouStatus', (tarefa) => {
 
         /* Armazena o 'indice' do Objeto (tarefa enviada pela Emissão do Evento) */
@@ -109,18 +107,21 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
       }),
 
-      /* Monitorando o Evento 'excluiuTarefa' que recebe um Objeto*/
+      /* Monitorando o Evento 'excluiuTarefa' que recebe um Objeto.
+      OBS -> Emitido pelo componente 'Tarefa'*/
       eventBus.on('excluiuTarefa', (tarefa) => {
 
         /* Armazena o 'indice' do Objeto (tarefa enviada pela Emissão do Evento) */
         const index = this.tarefas.indexOf(tarefa);
 
-        /* Verifica se o 'index' é maior ou igual a zero, antes de excluir o Objeto (tarefa) do Array (tarefas). OBS:  splice = recebe duas propriedades: inicio (onde se inicia a retirada de elementos) e quantidade (qtde de elementos a serem retirados do Array)*/
+        /* Verifica se o 'index' é maior ou igual a zero, antes de excluir o Objeto (tarefa) do Array (tarefas). 
+        OBS:  splice = recebe duas propriedades: inicio (onde se inicia a retirada de elementos) e quantidade (qtde de elementos a serem retirados do Array)*/
         (index >= 0)&&this.tarefas.splice(index, 1)
 
       }),
 
-      /* Monitorando o Evento 'adicionouTarefa' que recebe uma String*/
+      /* Monitorando o Evento 'adicionouTarefa' que recebe uma String.
+      OBS -> Emitido pelo componente InputTarefas*/
       eventBus.on('adicionouTarefa', (novaDescricao) => {
 
         /* Armazena os Objetos (tarefa) que tem a mesma descricao */
@@ -148,7 +149,8 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
       }),
 
-      /* Monitorando o Evento 'concluiuTarefas' que recebe uma String*/
+      /* Monitorando o Evento 'concluiuTarefas' que recebe uma String.
+      OBS -> Emitido pelo componente 'Botoes'*/
       eventBus.on('concluiuTarefas', (concluir) => {
 
         /* Atribuindo o valor 'true' para todas as chaves 'status' de cada Objeto (tarefa) dentro do Array (tarefas) */
@@ -156,7 +158,8 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
 
       });
 
-      /* Monitorando o Evento 'limpouTarefasConcluidas' que recebe uma String*/
+      /* Monitorando o Evento 'limpouTarefasConcluidas' que recebe uma String.
+      OBS -> Emitido pelo componente 'Botoes'*/
       eventBus.on('limpouTarefasConcluidas', () => {
 
         /* Evento não manda nenhuma informação. Armazena na constante apenas os Objetos (tarefa) com o status 'false' (tarefa não concluída) */
@@ -166,6 +169,8 @@ import ProgressoTarefas from './components/ProgressoTarefas.vue';
         this.tarefas = tarefasFaltantes
       })
 
+
+      
       /* Assim que o componente é criado, faz uma busca nos dados salvos no navegador (localStorage), busca os dados salvos com a chave 'tarefas' */
       const tarefasJson = localStorage.getItem('tarefas');
 

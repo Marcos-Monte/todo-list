@@ -6,7 +6,7 @@
         :class="statusTarefa"
         @click="alterarStatus()"
     >
-        <!-- Botão (?) para excluir tarefa no futuro. Stop garante que nada mais aconteça após a interassão com esse botão -->
+        <!-- Botão (?) para excluir tarefa. Stop garante que nada mais aconteça após a interassão com esse botão -->
         <span class="excluir"
             @click.stop="excluirTarefa()"
         >x</span>
@@ -44,7 +44,7 @@
             /* Monitora o valor de 'status' dentro de cada Objeto (tarefa) */
             statusTarefa(){
 
-                /* Condicional em Ternário */
+                /* Condicional em Ternário -> Se a propriedade 'status' for true, atribuir a primeira classe, senão atribuir a segunda*/
                 return this.propsTarefa.status? 'concluida': 'pendente'
 
             }

@@ -1,14 +1,16 @@
 <template>
 
+    <!-- Seção de Botões -->
     <section class="containerBotoes">
 
-
+        <!-- Botão muda o status de todas as tarefas para 'concluído' -->
         <button class="botao concluir"
             @click="concluirTarefas()"
         >
             Concluir Tarefas
         </button>
         
+        <!-- Botão que exclui todas as trefas com o status de 'concluído' -->
         <button class="botao limpar"
             @click="limparTarefas()"
         >
@@ -46,7 +48,7 @@
                 /* Método de confirmação, se clicar em confirmar, segue o codigo */
                 const confirmacao = confirm('Você deseja marcar todas as tarefas como concluídas?');
 
-                confirmacao === true&&eventBus.emit('concluiuTarefas', this.concluir )/* Emite um Evento Personalizado e para o valor da variavel 'concluir' */
+                confirmacao === true&&eventBus.emit('concluiuTarefas', this.concluir )/* Se o 'confirm' for true -> Emite um Evento Personalizado e para o valor da variavel 'concluir' */
 
             },
 
@@ -55,7 +57,7 @@
 
                  /* Método de confirmação, se clicar em confirmar, segue o codigo */
                 const confirmacao = confirm('Você deseja apagar todas as tarefas concluídas?');
-                /* Emite um Evento Personalizado e não passa valor algum */
+                /* Se 'confirme, for true -> Emite um Evento Personalizado e não passa valor algum */
                 confirmacao === true&&eventBus.emit('limpouTarefasConcluidas')
 
             }

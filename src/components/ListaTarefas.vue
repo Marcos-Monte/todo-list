@@ -6,7 +6,8 @@
     <section v-if="propsTarefas.length" class="listaTarefas" >
 
 
-        <!-- Array (propsTarefas) será percorrido e cada Objeto será enviada via 'props' (propsTarefa) pare renderização do componente. OBS: Necessário indicar uma 'v-bind-key', para evitar valores duplicados -->
+        <!-- Array (propsTarefas) será percorrido e cada Objeto será enviada via 'props' (propsTarefa) para renderização do componente. 
+        OBS: Necessário indicar uma 'v-bind-key', para evitar valores duplicados -->
         <Tarefa 
             v-for="tarefa in propsTarefas" 
             :key="tarefa.descricao" 
